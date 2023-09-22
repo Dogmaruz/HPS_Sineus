@@ -14,10 +14,14 @@ public class Trash : MonoBehaviour
 
     private IEntityFactory _factory;
 
+    private GameManager _gameManager;
+
     [Inject]
-    public void Construct(IEntityFactory entityFactory)
+    public void Construct(IEntityFactory entityFactory, GameManager gameManager)
     {
         _factory = entityFactory;
+
+        _gameManager = gameManager;
     }
 
     private void Awake()
@@ -31,11 +35,13 @@ public class Trash : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        var character = other.attachedRigidbody.GetComponent<CharacterMovement>();
+        var character = other.transform.root.GetComponent<CharacterMovement>();
 
         if (character != null)
         {
             _sphereCollider.enabled = false;
+
+            _gameManager.ReworkedTrash();
 
             _factory.Create(m_organicPrafabe, transform.position, Quaternion.identity, null);
 
