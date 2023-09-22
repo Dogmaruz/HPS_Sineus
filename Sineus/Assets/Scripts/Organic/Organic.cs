@@ -37,7 +37,7 @@ public class Organic : MonoBehaviour
         {
             _sphereCollider.enabled = false;
 
-            killZone.StopMove();
+            killZone.StopMove(10);
 
             if (m_ImpactEffect != null)
             {

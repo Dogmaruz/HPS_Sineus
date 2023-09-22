@@ -9,10 +9,12 @@ public class BootstrapInstaller : MonoInstaller
 
     public override void InstallBindings()
     {
-         Container.
-                   Bind<BackgroundSoundPlayer>()
-                  .FromComponentInNewPrefab(m_backgroundSoundPlayer)
-                  .AsSingle();
+        Container.Bind<GameManager>().FromNew().AsSingle();
+
+        Container.
+                  Bind<BackgroundSoundPlayer>()
+                 .FromComponentInNewPrefab(m_backgroundSoundPlayer)
+                 .AsSingle();
 
         Container.
                   Bind<SoundPlayer>()
