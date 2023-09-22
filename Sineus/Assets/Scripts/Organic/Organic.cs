@@ -8,9 +8,11 @@ public class Organic : MonoBehaviour
 
     [SerializeField] private Transform m_parentTransform;
 
-    [SerializeField] private GameObject m_ImpactEffect;
+    [SerializeField] private ImpactEffect m_ImpactEffect;
 
-    private SphereCollider _sphereCollider;
+    [SerializeField] private ShieldEffect m_ShieldEffect;
+
+    [SerializeField] private float m_StopZoneTime = 1;
 
     private IEntityFactory _factory;
 
@@ -22,27 +24,14 @@ public class Organic : MonoBehaviour
 
     private void Awake()
     {
-        _sphereCollider = GetComponent<SphereCollider>();
-
         var rnd = Random.Range(0, m_organicPrafabes.Count);
 
         _factory.Create(m_organicPrafabes[rnd], transform.position, Quaternion.identity, m_parentTransform);
-    }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        var killZone = other.transform.root.GetComponent<KillZone>();
-
-        if (killZone != null)
+        if (m_ShieldEffect != null)
         {
-            _sphereCollider.enabled = false;
-
-            killZone.StopMove();
-
-            if (m_ImpactEffect != null)
-            {
-                _factory.Create(m_ImpactEffect, transform.position, Quaternion.identity, null);
-            }
+            var shield = Instantiate(m_ShieldEffect, transform.position, Quaternion.identity);
+            shield.SetLifeTime(m_StopZoneTime);
         }
     }
 }

@@ -66,6 +66,8 @@ MonoBehaviour:
   - {fileID: 5716520169603743821, guid: 54c8a80da3e94a24787d809b90d69e5c, type: 3}
   m_parentTransform: {fileID: 6733542765258643991}
   m_ImpactEffect: {fileID: 0}
+  m_ShieldEffect: {fileID: 2917128632297386128, guid: 357e40ed51372e34098b2d3c046f3852, type: 3}
+  m_StopZoneTime: 10
 --- !u!114 &6733542765001651984
 MonoBehaviour:
   m_ObjectHideFlags: 0

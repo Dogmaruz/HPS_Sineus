@@ -28,7 +28,8 @@ public class KillZone : MonoBehaviour
 
         if (_transform.localScale.x >= 0 && isStopped == false)
         {
-            _transform.localScale -= new Vector3(Time.deltaTime * contractionRate, 0, Time.deltaTime * contractionRate);
+            float size = Time.deltaTime * contractionRate;
+            _transform.localScale -= new Vector3(size, size, 0);
         }
     }
 
