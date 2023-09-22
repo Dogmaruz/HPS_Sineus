@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using Zenject;
 
 public class MarkToFinishPoint : MonoBehaviour
 {
@@ -9,6 +10,14 @@ public class MarkToFinishPoint : MonoBehaviour
     [SerializeField] private GameObject beaconFinish;
 
     private bool isFinished;
+
+    private GameManager _gameManager;
+
+    [Inject]
+    public void Construct(GameManager gameManager)
+    {
+        _gameManager = gameManager;
+    }
 
     void Start()
     {

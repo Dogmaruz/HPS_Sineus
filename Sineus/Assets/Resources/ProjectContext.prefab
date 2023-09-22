@@ -75,3 +75,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_backgroundSoundPlayer: {fileID: 6621693980122249269, guid: e0754bcddd88e6548bac6d8db2dc392a, type: 3}
+  m_soundPlayer: {fileID: 8090287198812915970, guid: bd05109552acbef4ca0d50e8aaed9cc9, type: 3}
