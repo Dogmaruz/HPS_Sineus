@@ -74,3 +74,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9d9fef598663144b852b1c81605521a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_backgroundSoundPlayer: {fileID: 6621693980122249269, guid: e0754bcddd88e6548bac6d8db2dc392a, type: 3}

@@ -12,10 +12,12 @@ public class Trash : MonoBehaviour
 
     private SphereCollider _sphereCollider;
 
+    private IEntityFactory _factory;
+
     [Inject]
-    public void Construct()
+    public void Construct(IEntityFactory entityFactory)
     {
-        
+        _factory = entityFactory;
     }
 
     private void Awake()
@@ -24,7 +26,7 @@ public class Trash : MonoBehaviour
 
         var rnd = Random.Range(0, m_trashPrafabes.Count);
 
-        Instantiate(m_trashPrafabes[rnd], transform.position, Quaternion.identity, m_parentTransform);
+        _factory.Create(m_trashPrafabes[rnd], transform.position, Quaternion.identity, m_parentTransform);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -35,7 +37,7 @@ public class Trash : MonoBehaviour
         {
             _sphereCollider.enabled = false;
 
-            Instantiate(m_organicPrafabe, transform.position, Quaternion.identity);
+            _factory.Create(m_organicPrafabe, transform.position, Quaternion.identity, null);
 
             Destroy(gameObject);
         }

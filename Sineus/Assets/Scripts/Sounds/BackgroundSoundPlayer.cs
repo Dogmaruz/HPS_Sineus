@@ -1,21 +1,27 @@
 using UnityEngine;
 
+[RequireComponent (typeof(AudioSource))]
 public class BackgroundSoundPlayer : MonoBehaviour
 {
-    [SerializeField] private AudioSource m_AudioSource;
-    public AudioSource AudioSource { get => m_AudioSource; set => m_AudioSource = value; }
+    private AudioSource _audioSource;
+    public AudioSource AudioSource { get => _audioSource; set => _audioSource = value; }
+
+    private void Awake()
+    {
+        _audioSource = GetComponent<AudioSource>();
+    }
 
     public void Play(AudioClip bckgroundSound, float volume)
     {
-        if (m_AudioSource.isPlaying)
+        if (_audioSource.isPlaying)
         {
-            m_AudioSource?.Stop();
+            _audioSource?.Stop();
         }
 
-        m_AudioSource.clip = bckgroundSound;
+        _audioSource.clip = bckgroundSound;
 
-        m_AudioSource.volume = volume;
+        _audioSource.volume = volume;
 
-        m_AudioSource.Play();
+        _audioSource.Play();
     }
 }

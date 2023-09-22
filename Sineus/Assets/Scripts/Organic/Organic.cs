@@ -12,10 +12,12 @@ public class Organic : MonoBehaviour
 
     private SphereCollider _sphereCollider;
 
-    [Inject]
-    public void Construct()
-    {
+    private IEntityFactory _factory;
 
+    [Inject]
+    public void Construct(IEntityFactory entityFactory)
+    {
+        _factory = entityFactory;
     }
 
     private void Awake()
@@ -24,7 +26,7 @@ public class Organic : MonoBehaviour
 
         var rnd = Random.Range(0, m_organicPrafabes.Count);
 
-        Instantiate(m_organicPrafabes[rnd], transform.position, Quaternion.identity, m_parentTransform);
+        _factory.Create(m_organicPrafabes[rnd], transform.position, Quaternion.identity, m_parentTransform);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -39,7 +41,7 @@ public class Organic : MonoBehaviour
 
             if (m_ImpactEffect != null)
             {
-                Instantiate(m_ImpactEffect, transform.position, Quaternion.identity);
+                _factory.Create(m_ImpactEffect, transform.position, Quaternion.identity, null);
             }
         }
     }
