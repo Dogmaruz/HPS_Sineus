@@ -4,9 +4,9 @@ using Zenject;
 
 public class Trash : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> m_trashPrafabes;
+    [SerializeField] private List<GameObject> m_trashPrefabs;
 
-    [SerializeField] private GameObject m_organicPrafabe;
+    [SerializeField] private GameObject m_organicPrefab;
 
     [SerializeField] private Transform m_parentTransform;
 
@@ -28,9 +28,9 @@ public class Trash : MonoBehaviour
     {
         _sphereCollider = GetComponent<SphereCollider>();
 
-        var rnd = Random.Range(0, m_trashPrafabes.Count);
+        var rnd = Random.Range(0, m_trashPrefabs.Count);
 
-        _factory.Create(m_trashPrafabes[rnd], transform.position, Quaternion.identity, m_parentTransform);
+        _factory.Create(m_trashPrefabs[rnd], transform.position, Quaternion.identity, m_parentTransform);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -43,7 +43,7 @@ public class Trash : MonoBehaviour
 
             _gameManager.ReworkedTrash();
 
-            _factory.Create(m_organicPrafabe, transform.position, Quaternion.identity, null);
+            _factory.Create(m_organicPrefab, transform.position, Quaternion.identity, null);
 
             Destroy(gameObject);
         }

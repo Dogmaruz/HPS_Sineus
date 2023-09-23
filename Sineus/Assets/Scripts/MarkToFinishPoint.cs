@@ -20,10 +20,10 @@ public class MarkToFinishPoint : MonoBehaviour
 
     private void Start()
     {
-        gameObject.SetActive(false);
         _levelController.OnAllTrashCollected += StartFinishStage;
         //_audioSource = GetComponent<AudioSource>();
         //_audioSource.enabled = false;
+        gameObject.SetActive(false);
     }
 
     private void OnDestroy()

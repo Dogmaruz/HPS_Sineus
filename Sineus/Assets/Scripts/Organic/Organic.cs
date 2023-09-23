@@ -4,7 +4,7 @@ using Zenject;
 
 public class Organic : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> m_organicPrafabes;
+    [SerializeField] private List<GameObject> m_organicPrefabs;
 
     [SerializeField] private Transform m_parentTransform;
 
@@ -24,9 +24,9 @@ public class Organic : MonoBehaviour
 
     private void Awake()
     {
-        var rnd = Random.Range(0, m_organicPrafabes.Count);
+        var rnd = Random.Range(0, m_organicPrefabs.Count);
 
-        _factory.Create(m_organicPrafabes[rnd], transform.position, Quaternion.identity, m_parentTransform);
+        _factory.Create(m_organicPrefabs[rnd], transform.position, Quaternion.identity, m_parentTransform);
 
         if (m_ShieldEffect != null)
         {
