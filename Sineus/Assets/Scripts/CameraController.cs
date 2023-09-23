@@ -27,20 +27,14 @@ public class CameraController : MonoBehaviour
 
     private float deltaRotationX;
     private float deltaRotationY;
-    private float deltaRotationZ;
 
     private float currentDistance;
 
-    private float defaultDistanceCamera;
-    private float playerDistanceCamera;
     private Vector3 targetOffset;
-    private Vector3 defaultOffset;
 
     private void Start()
     {
-        defaultOffset = offset;
         targetOffset = offset;
-        defaultDistanceCamera = distanceCamera;
     }
     private void Update()
     {
@@ -50,7 +44,6 @@ public class CameraController : MonoBehaviour
 
         deltaRotationY = ClampAngle(deltaRotationY, minAngleLimitY, maxAngleLimitY);
 
-        // offset = Vector3.Lerp(offset, targetOffset, Time.deltaTime * sensetive);
         offset = Vector3.MoveTowards(offset, targetOffset, Time.deltaTime * offsetLerpRate);
 
         Quaternion finalRotation = Quaternion.Euler(-deltaRotationY, deltaRotationX, 0);
@@ -114,22 +107,5 @@ public class CameraController : MonoBehaviour
             angle -= 360;
 
         return Mathf.Clamp(angle, min, max);
-    }
-
-    public void SetTargetOffset(Vector3 _offset)
-    {
-        targetOffset = _offset;
-        playerDistanceCamera = distanceCamera;
-        distanceCamera = defaultDistanceCamera;
-        //distanceCamera = Mathf.Lerp(distanceCamera, targetOffset.y, Time.deltaTime * sensetive);
-
-
-    }
-
-    public void SetDefaultOffset()
-    {
-        targetOffset = defaultOffset;
-        distanceCamera = playerDistanceCamera;
-        // distanceCamera = Mathf.Lerp(distanceCamera, defaultDistanceCamera, Time.deltaTime * sensetive);
     }
 }

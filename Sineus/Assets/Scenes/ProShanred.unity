@@ -264,9 +264,9 @@ MonoBehaviour:
   minDistanceCamera: 4
   maxDistanceCamera: 7
   sensetive: 2
-  offset: {x: 0, y: 1, z: 0}
+  offset: {x: 0, y: 1, z: -1}
   offsetLerpRate: 3
-  rotateTargetLerpRate: 800
+  rotateTargetLerpRate: 250
   maxAngleLimitY: 30
   minAngleLimitY: -20
   minDistance: 0.5
@@ -845,11 +845,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1643411149}
+  - component: {fileID: 1643411153}
+  - component: {fileID: 1643411154}
   - component: {fileID: 1643411151}
   - component: {fileID: 1643411150}
   - component: {fileID: 1643411152}
-  - component: {fileID: 1643411153}
-  - component: {fileID: 1643411154}
   - component: {fileID: 1643411155}
   m_Layer: 0
   m_Name: Player
@@ -890,7 +890,6 @@ MonoBehaviour:
   target: {fileID: 1643411149}
   verticalSpeed: 400
   targetCamera: {fileID: 285602409}
-  pitchSpeed: 10
 --- !u!114 &1643411151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -904,7 +903,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedFly: 8
-  upSpeed: 20
   TargetDirectionControl: {x: 0, y: 0, z: 0}
   DirectionControl: {x: 0, y: 0, z: 0}
 --- !u!114 &1643411152
@@ -941,8 +939,8 @@ Rigidbody:
   m_AngularDrag: 0
   m_UseGravity: 0
   m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
+  m_Interpolate: 1
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!143 &1643411154
 CharacterController:
@@ -955,10 +953,10 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 2
-  m_Radius: 0.5
+  m_Height: 1.99
+  m_Radius: 0.85
   m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_StepOffset: 0.18
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}

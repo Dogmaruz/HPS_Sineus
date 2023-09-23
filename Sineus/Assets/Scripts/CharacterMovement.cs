@@ -4,8 +4,6 @@ public class CharacterMovement : MonoBehaviour
 {
     [Header("Movement")]
     [SerializeField] private float speedFly;
-    [SerializeField] private float upSpeed;
-
 
     private CharacterController characterController;
     public Vector3 TargetDirectionControl;
@@ -18,24 +16,21 @@ public class CharacterMovement : MonoBehaviour
 
     }
 
-    private void Update()
+    private void FixedUpdate()
     {                
         Move();
     }
 
     private void Move()
     {
-        DirectionControl = Vector3.MoveTowards(DirectionControl, TargetDirectionControl, Time.deltaTime * speedFly);
+        DirectionControl = Vector3.MoveTowards(DirectionControl, TargetDirectionControl, Time.fixedDeltaTime);
 
 
 
-        movementDirections = DirectionControl * speedFly;
+        movementDirections = DirectionControl * speedFly * Time.fixedDeltaTime;
 
         movementDirections = transform.TransformDirection(movementDirections);
-        movementDirections += Physics.gravity * Time.deltaTime;
-        characterController.Move(movementDirections * Time.deltaTime);
+       // movementDirections += Physics.gravity * Time.deltaTime;
+        characterController.Move(movementDirections );
     }
-
-
-
 }

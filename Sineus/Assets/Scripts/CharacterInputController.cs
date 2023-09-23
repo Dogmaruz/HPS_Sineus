@@ -1,4 +1,3 @@
-using ModestTree;
 using UnityEngine;
 
 public class CharacterInputController : MonoBehaviour
@@ -9,8 +8,6 @@ public class CharacterInputController : MonoBehaviour
 
     [SerializeField] private CameraController targetCamera;
 
-
-    [SerializeField] private float pitchSpeed;
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -34,7 +31,5 @@ public class CharacterInputController : MonoBehaviour
         else
             targetCamera.IsRotateTarget = false;
  
-
     }
-
 }

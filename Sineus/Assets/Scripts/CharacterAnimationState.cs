@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterAnimationState : MonoBehaviour
@@ -21,6 +19,5 @@ public class CharacterAnimationState : MonoBehaviour
         inputControl = Vector3.MoveTowards(inputControl, characterMovement.TargetDirectionControl, Time.deltaTime * INPUT_CONTROL_LERP);
         targetAnimator.SetFloat("NormolizeMovementX", inputControl.x);
         targetAnimator.SetFloat("NormolizeMovementZ", inputControl.z);
-
     }
 }
