@@ -55,17 +55,22 @@ public class Beacon : MonoBehaviour
         }
 
         timerText.text = StringTime.SecondToTimeString(timer.CurrentTime);
+        if (timer.CurrentTime < 20)
+        {
+            timerText.color = Color.red;
+        }
     }
 
     private void StartFinishStage()
     {
         isFinishStage = true;
-        timer = Timer.CreateTimer(timeDurationOfFinish, true);
+        timer = Timer.CreateTimer(timeDurationOfFinish, false);
         timer.OnTimeRanOut += TimeOver;
     }
 
     private void TimeOver()
     {
+        isFinishStage = false;
         timer.OnTimeRanOut -= TimeOver;
     }
 }
