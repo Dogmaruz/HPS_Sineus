@@ -33,12 +33,7 @@ public class CharacterInputController : MonoBehaviour
         }
         else
             targetCamera.IsRotateTarget = false;
-
-
-        /*if (Input.GetKeyDown(KeyCode.E))*/
-
-
-        targetCamera.IsRotateTarget = true;     
+ 
 
     }
 

@@ -11,20 +11,15 @@ public class CharacterMovement : MonoBehaviour
     public Vector3 TargetDirectionControl;
     public Vector3 DirectionControl;
     private Vector3 movementDirections;
-     Rigidbody rb;
-    
-
 
     private void Start()
     {
         characterController = GetComponent<CharacterController>();
-        rb = GetComponent<Rigidbody>();
+
     }
 
     private void Update()
-    {
-      
-            
+    {                
         Move();
     }
 
@@ -36,14 +31,8 @@ public class CharacterMovement : MonoBehaviour
 
         movementDirections = DirectionControl * speedFly;
 
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            movementDirections.y = upSpeed;
-          
-        }
         movementDirections = transform.TransformDirection(movementDirections);
-
+        movementDirections += Physics.gravity * Time.deltaTime;
         characterController.Move(movementDirections * Time.deltaTime);
     }
 
