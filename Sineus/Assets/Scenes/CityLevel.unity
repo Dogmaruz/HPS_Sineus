@@ -19188,7 +19188,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2443043763590414628, guid: 614f187695cc8c24e8ccf13de37a690f, type: 3}
       propertyPath: m_damage
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4480004351741140461, guid: 614f187695cc8c24e8ccf13de37a690f, type: 3}
       propertyPath: leftArrow
