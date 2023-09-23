@@ -1,5 +1,4 @@
 using System;
-using UnityEngine;
 
 public class GameManager
 {
@@ -15,7 +14,7 @@ public class GameManager
 
         OnReworked?.Invoke(_reworked);
     }
-
+    
     public void LevelCompleted()
     {
         OnLevelCompleted?.Invoke(_reworked);

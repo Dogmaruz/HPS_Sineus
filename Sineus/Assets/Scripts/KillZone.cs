@@ -1,14 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class KillZone : MonoBehaviour
 {
-    [SerializeField] private float contractionRate = 1;
-    private Transform _transform;
-    private bool isStopped = false;
+    [SerializeField] private float m_ContractionRate = 1;
 
-    private float timer;
+    [SerializeField] private int m_Damage;
+
+    private Transform _transform;
+    private bool _isStopped = false;
+
+    private float _timer;
 
     private void Start()
     {
@@ -17,25 +18,35 @@ public class KillZone : MonoBehaviour
 
     private void Update()
     {
-        if (timer > 0)
+        if (_timer > 0)
         {
-            timer -= Time.deltaTime;
+            _timer -= Time.deltaTime;
         }
         else
         {
-            isStopped = false;
+            _isStopped = false;
         }
 
-        if (_transform.localScale.x >= 0 && isStopped == false)
+        if (_transform.localScale.x >= 0 && _isStopped == false)
         {
-            float size = Time.deltaTime * contractionRate;
+            float size = Time.deltaTime * m_ContractionRate;
             _transform.localScale -= new Vector3(size, size, 0);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        var player = other.transform.root.GetComponent<PlayerHP>();
+
+        if (player != null)
+        {
+            player.RemoveHealth(m_Damage);
         }
     }
 
     public void StopMove(float time)
     {
-        isStopped = true;
-        timer = time;
+        _isStopped = true;
+        _timer = time;
     }
 }

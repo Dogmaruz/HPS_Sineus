@@ -11,14 +11,15 @@ public class UIReworked : MonoBehaviour
     [SerializeField] private GameObject m_timerCompas;
 
     private GameManager _gameManager;
+    private LevelController _levelController;
 
-    private int _maxCountReworked = 4;
+    private int _winCount;
 
     [Inject]
-    public void Construct(IEntityFactory entityFactory, GameManager gameManager)
+    public void Construct(IEntityFactory entityFactory, GameManager gameManager, LevelController levelController)
     {
-
         _gameManager = gameManager;
+        _levelController = levelController;
     }
 
     private void Awake()
@@ -26,11 +27,16 @@ public class UIReworked : MonoBehaviour
         _gameManager.OnReworked += UpdateText;
     }
 
+    private void Start()
+    {
+        _winCount = _levelController.TrashWinCount;
+    }
+
     private void UpdateText(int count)
     {
-        if (count <= _maxCountReworked)
+        if (count <= _winCount)
         {
-            m_reworkedText.text = count.ToString() + "/" + _maxCountReworked;
+            m_reworkedText.text = count.ToString() + "/" + _winCount;
         }
         else
         {
@@ -41,7 +47,7 @@ public class UIReworked : MonoBehaviour
                 m_timerCompas.SetActive(true);
             }
 
-            m_bonusText.text = "+ " + Mathf.Abs(_maxCountReworked - count).ToString();
+            m_bonusText.text = "+ " + Mathf.Abs(_winCount - count).ToString();
         }
     }
 }
