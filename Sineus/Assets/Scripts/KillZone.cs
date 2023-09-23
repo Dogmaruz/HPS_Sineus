@@ -40,6 +40,12 @@ public class KillZone : MonoBehaviour
             _isStopped = false;
         }
 
+        if (_transform.localScale.x < 1)
+        {
+            _isStopped = true;
+            _transform.localScale = new Vector3(0, 0, 0);
+        }
+
         if (_transform.localScale.x >= 0 && _isStopped == false)
         {
             float size = Time.deltaTime * m_contractionRate;
@@ -49,8 +55,8 @@ public class KillZone : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        var player = other.transform.root.GetComponent<PlayerHP>();
-
+        var player = other.transform.GetComponent<PlayerHP>();
+        print(other);
         if (player != null)
         {
             player.RemoveHealth(m_damage);
