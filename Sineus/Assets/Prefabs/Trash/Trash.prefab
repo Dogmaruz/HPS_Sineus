@@ -47,11 +47,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c142073b3048264c8fb43f0266ee7a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_trashPrafabes:
+  m_trashPrefabs:
   - {fileID: 5716520169603743821, guid: 52592c54bab858f4ca41f6080b7248d9, type: 3}
   - {fileID: 5716520169603743821, guid: 57c01064317569045865c4ddcfe0056a, type: 3}
   - {fileID: 5716520169603743821, guid: 8510f3f4202a81d40bde36f65628da62, type: 3}
-  m_organicPrafabe: {fileID: 6733542765001651985, guid: ac3f9096720774841b9f81e66c02f980, type: 3}
+  m_organicPrefab: {fileID: 0}
   m_parentTransform: {fileID: 56774845746843152}
 --- !u!135 &56774845095996335
 SphereCollider:

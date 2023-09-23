@@ -5,13 +5,17 @@ using Zenject;
 public class BuildingsController : MonoBehaviour
 {
     [SerializeField] private List<NewBuilding> m_newBuildingsPrefabs;
+
     private List<OldBuilding> _oldBuildings;
+
     private LevelController _levelController;
     private GameManager _gameManager;
+    private IEntityFactory _factory;
+
+    private Transform _parentTransform;
+
     private int _stepsCount;
     private int _buildingsCountInStep;
-    private IEntityFactory _factory;
-    private Transform _parentTransform;
 
     [Inject]
     public void Construct(LevelController levelController, GameManager gameManager, IEntityFactory entityFactory)
@@ -59,9 +63,9 @@ public class BuildingsController : MonoBehaviour
     {
         var rnd = Random.Range(0, m_newBuildingsPrefabs.Count);
 
-        var newBuilding = _factory.Create(m_newBuildingsPrefabs[rnd].gameObject, transform.position, Quaternion.identity, _parentTransform);
+        var newBuilding = _factory.Create(m_newBuildingsPrefabs[rnd].gameObject, oldBuilding.transform.position, oldBuilding.transform.rotation, _parentTransform);
 
-        Destroy(oldBuilding);
+        Destroy(oldBuilding.gameObject);
     }
 
     private void ChangeBuildings(int step)
@@ -74,6 +78,7 @@ public class BuildingsController : MonoBehaviour
         if (step == _stepsCount)
         {
             ChangeRemainingBuildings();
+            _gameManager.OnReworked -= ChangeBuildings;
         }
     }
 

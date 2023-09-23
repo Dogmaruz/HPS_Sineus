@@ -36,7 +36,6 @@ public class KillZoneController : MonoBehaviour
         if (killZone != null)
         {
             _isInZone = true;
-            print("inZone");
         }
     }
 
@@ -47,7 +46,6 @@ public class KillZoneController : MonoBehaviour
         if (killZone != null)
         {
             _isInZone = false;
-            print("Exit");
         }
     }
 }

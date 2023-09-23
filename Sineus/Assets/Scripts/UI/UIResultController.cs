@@ -41,8 +41,6 @@ public class UIResultController : MonoBehaviour
 
     private void ShowResultPanel(bool result)
     {
-        Time.timeScale = 0;
-
         if (result == true)
         {
             m_winPanel.SetActive(true);
