@@ -10,6 +10,8 @@ public class MarkToFinishPoint : MonoBehaviour
 
     private bool _isTrashCollected = false;
 
+    private AudioSource _audioSource;
+
     [Inject]
     public void Construct(LevelController levelController)
     {
@@ -20,6 +22,8 @@ public class MarkToFinishPoint : MonoBehaviour
     {
         gameObject.SetActive(false);
         _levelController.OnAllTrashCollected += StartFinishStage;
+        _audioSource = GetComponent<AudioSource>();
+        _audioSource.enabled = false;
     }
 
     private void OnDestroy()
@@ -27,13 +31,6 @@ public class MarkToFinishPoint : MonoBehaviour
         _levelController.OnAllTrashCollected -= StartFinishStage;
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.P)) //TODO debug
-        {
-            StartFinishStage(true); 
-        }
-    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -52,5 +49,6 @@ public class MarkToFinishPoint : MonoBehaviour
     {
         gameObject.SetActive(result);
         _isTrashCollected = result;
+        _audioSource.enabled = true;
     }
 }

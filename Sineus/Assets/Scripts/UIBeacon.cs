@@ -23,6 +23,7 @@ public class UIBeacon : MonoBehaviour
 
     private Timer timer;
 
+
     [Inject]
     public void Construct(MarkToFinishPoint markToFinishPoint, LevelController levelController)
     {

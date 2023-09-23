@@ -9,10 +9,13 @@ public class CharacterAnimationState : MonoBehaviour
 
     [SerializeField] private Animator targetAnimator;
 
+    // Нарушаем логику )
 
+    [SerializeField] private AudioSource audioSource;
 
     private Vector3 inputControl;
     private bool isPickup;
+
 
     private void LateUpdate()
     {
@@ -21,6 +24,8 @@ public class CharacterAnimationState : MonoBehaviour
         targetAnimator.SetFloat("NormolizeMovementX", inputControl.x);
         targetAnimator.SetFloat("NormolizeMovementZ", inputControl.z);
         targetAnimator.SetBool("isPickup", isPickup);
+
+        SpeedSound(inputControl.z);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -31,5 +36,14 @@ public class CharacterAnimationState : MonoBehaviour
         }
         else
             isPickup = false;
-    }    
+    }
+
+    //TODO вычисления питча от скорости форварда. 
+    private void SpeedSound(float speed)
+    {
+        if (speed < 0.34f)
+            audioSource.pitch = Mathf.Lerp(1, audioSource.pitch, Time.deltaTime);
+        else
+        audioSource.pitch = Mathf.Lerp(audioSource.pitch, speed / 0.34f, Time.deltaTime) ;
+    }
 }
