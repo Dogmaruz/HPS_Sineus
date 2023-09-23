@@ -40815,10 +40815,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: KillZone
       objectReference: {fileID: 0}
-    - target: {fileID: 9220737497015702069, guid: f68d2779e76d4c94d9cf86c7a0c677c7, type: 3}
-      propertyPath: m_contractionRate
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f68d2779e76d4c94d9cf86c7a0c677c7, type: 3}
 --- !u!1001 &1563499141

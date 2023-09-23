@@ -6,21 +6,21 @@ public class NormalsInverter : MonoBehaviour
 
     private void Start()
     {
-        InvertSphere();
+        InvertMesh();
     }
 
-    private void InvertSphere()
+    private void InvertMesh()
     {
-        Vector3[] normals = InvertedObject.GetComponent<MeshFilter>().mesh.normals;
+        Vector3[] normals = InvertedObject.GetComponent<MeshCollider>().sharedMesh.normals;
 
         for (int i = 0; i < normals.Length; i++)
         {
             normals[i] = -normals[i];
         }
 
-        InvertedObject.GetComponent<MeshFilter>().sharedMesh.normals = normals;
+        InvertedObject.GetComponent<MeshCollider>().sharedMesh.normals = normals;
 
-        int[] triangles = InvertedObject.GetComponent<MeshFilter>().sharedMesh.triangles;
+        int[] triangles = InvertedObject.GetComponent<MeshCollider>().sharedMesh.triangles;
 
         for (int i = 0; i < triangles.Length; i += 3)
         {
@@ -29,6 +29,6 @@ public class NormalsInverter : MonoBehaviour
             triangles[i + 2] = t;
         }
 
-        InvertedObject.GetComponent<MeshFilter>().sharedMesh.triangles = triangles;
+        InvertedObject.GetComponent<MeshCollider>().sharedMesh.triangles = triangles;
     }
 }
