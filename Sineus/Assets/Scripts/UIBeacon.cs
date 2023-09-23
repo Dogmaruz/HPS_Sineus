@@ -23,6 +23,7 @@ public class UIBeacon : MonoBehaviour
 
     private Timer timer;
 
+
     [Inject]
     public void Construct(MarkToFinishPoint markToFinishPoint, LevelController levelController)
     {
@@ -67,6 +68,8 @@ public class UIBeacon : MonoBehaviour
         }
 
         timerText.text = StringTime.SecondToTimeString(timer.CurrentTime);
+        if(timer.CurrentTime < 15)
+            timerText.color = Color.red;
     }
 
     private void StartFinishStage(bool result)
