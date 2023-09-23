@@ -55956,6 +55956,10 @@ PrefabInstance:
       propertyPath: rightArrow
       value: 
       objectReference: {fileID: 1087870421}
+    - target: {fileID: 4480004351741140461, guid: 614f187695cc8c24e8ccf13de37a690f, type: 3}
+      propertyPath: timeDurationOfFinish
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4480004351741140464, guid: 614f187695cc8c24e8ccf13de37a690f, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -56284,10 +56288,6 @@ PrefabInstance:
     - target: {fileID: 2007583947480999693, guid: 9704164ecc6cc924bb85b29acf6acbe3, type: 3}
       propertyPath: m_Name
       value: MarkToFinishPoint
-      objectReference: {fileID: 0}
-    - target: {fileID: 2007583947480999693, guid: 9704164ecc6cc924bb85b29acf6acbe3, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9704164ecc6cc924bb85b29acf6acbe3, type: 3}

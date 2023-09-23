@@ -4,9 +4,9 @@ using Zenject;
 
 public class UIReworked : MonoBehaviour
 {
-    [SerializeField] private TMP_Text m_reworkedText;
+    [SerializeField] private TMP_Text _reworkedTrashCountText;
 
-    [SerializeField] private TMP_Text m_bonusText;
+    [SerializeField] private TMP_Text _needTrashCountText;
 
     [SerializeField] private GameObject m_timerCompas;
 
@@ -34,31 +34,22 @@ public class UIReworked : MonoBehaviour
 
         UpdateText(0);
 
-        m_bonusText.gameObject.SetActive(false);
         m_timerCompas.SetActive(false);
     }
 
     private void UpdateText(int count)
     {
-        if (count < _winCount)
-        {
-            m_reworkedText.text = count.ToString() + "/" + _winCount;
-        }
-        else if (count == _winCount)
-        {
-            m_reworkedText.text = count.ToString() + "/" + _winCount;
-        }
-        else if (count > _winCount)
-        {
-            m_bonusText.text = "+ " + Mathf.Abs(_winCount - count).ToString();
+        _reworkedTrashCountText.text = count.ToString();
+        _needTrashCountText.text = _winCount.ToString();
 
+        if (count > _winCount)
+        {
+            _reworkedTrashCountText.color = new Color(0.61f, 0.86f, 0.6f);
         }
     }
 
     private void SetTimerCompasVisibility(bool result)
     {
         m_timerCompas.SetActive(result);
-
-        m_bonusText.gameObject.SetActive(result);
     }
 }
