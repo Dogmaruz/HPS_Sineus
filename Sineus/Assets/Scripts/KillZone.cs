@@ -5,9 +5,6 @@ public class KillZone : MonoBehaviour
 {
     [SerializeField] private float m_contractionRate = 1;
 
-    [SerializeField] private int m_damage;
-    public int Damage => m_damage;
-
     private LevelController _levelController;
 
     private Transform _transform;
@@ -53,8 +50,6 @@ public class KillZone : MonoBehaviour
             _transform.localScale -= new Vector3(size, size, 0);
         }
     }
-
-    
 
     public void StopMove(float time)
     {

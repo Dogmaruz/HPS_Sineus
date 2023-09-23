@@ -226,6 +226,7 @@ GameObject:
   - component: {fileID: 7906971501227197121}
   - component: {fileID: 6491075998518857060}
   - component: {fileID: 9074780132825577902}
+  - component: {fileID: 3732908353919833217}
   m_Layer: 0
   m_Name: Building3_Old_low
   m_TagString: Untagged
@@ -299,3 +300,15 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &3732908353919833217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7417679289450535035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9d92f2c5a69179449c629b20a3382b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

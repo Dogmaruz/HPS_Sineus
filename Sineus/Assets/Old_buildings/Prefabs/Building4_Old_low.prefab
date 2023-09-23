@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8150667567186560298}
   - component: {fileID: 6266771792332009952}
   - component: {fileID: 915309844543657252}
+  - component: {fileID: 2879548279771364882}
   m_Layer: 0
   m_Name: Building4_Old_low
   m_TagString: Untagged
@@ -97,3 +98,15 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.08836317, y: 0.08836321, z: 1.0053059}
   m_Center: {x: 0.00000023841858, y: -0.000000005587937, z: 0.50265306}
+--- !u!114 &2879548279771364882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5618513000300056629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9d92f2c5a69179449c629b20a3382b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
