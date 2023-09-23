@@ -4,10 +4,11 @@ using UnityEngine;
 public class PlayerHP : MonoBehaviour
 {
     public event Action OnPlayerDeath;
+    public event Action<float> OnCurrentHPUpdate;
     private int m_MaxHitPoints = 100;
     private int _currentHP;
 
-    public int NormalizedHP => _currentHP / m_MaxHitPoints;
+    public float NormalizedHP => (float)_currentHP / m_MaxHitPoints;
 
     private void Start()
     {
@@ -22,6 +23,9 @@ public class PlayerHP : MonoBehaviour
         {
             _currentHP = m_MaxHitPoints;
         }
+
+
+        OnCurrentHPUpdate?.Invoke(NormalizedHP);
     }
 
     public void RemoveHealth(int value)
@@ -33,5 +37,7 @@ public class PlayerHP : MonoBehaviour
             _currentHP = 0;
             OnPlayerDeath?.Invoke();
         }
+
+        OnCurrentHPUpdate?.Invoke(NormalizedHP);
     }
 }
