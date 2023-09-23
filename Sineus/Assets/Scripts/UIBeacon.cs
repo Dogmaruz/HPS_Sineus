@@ -1,11 +1,12 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
-public class Beacon : MonoBehaviour
+public class UIBeacon : MonoBehaviour
 {
-    [SerializeField] private MarkToFinishPoint finishPoint;
-    [SerializeField] private bool isFinishStage;
+    [SerializeField] private float timeDurationOfFinish;
+
     [SerializeField] private float leftAngle = 40;
     [SerializeField] private float rightAngle = -40;
 
@@ -13,30 +14,41 @@ public class Beacon : MonoBehaviour
     [SerializeField] private Image rightArrow;
     [SerializeField] private TMP_Text timerText;
 
-    [SerializeField] private float angle;
+    private MarkToFinishPoint _markToFinishPoint;
+    private LevelController _levelController;
+
+    private float angle;
+
+    private bool _isFinishStage;
 
     private Timer timer;
-    [SerializeField] private float timeDurationOfFinish;
-    void Start()
+
+    [Inject]
+    public void Construct(MarkToFinishPoint markToFinishPoint, LevelController levelController)
     {
-        finishPoint.eventMarkBeacon += StartFinishStage;
+        _markToFinishPoint = markToFinishPoint;
+        _levelController = levelController;
     }
 
-    void Update()
+    private void Start()
     {
+        _levelController.OnAllTrashCollected += StartFinishStage;
+    }
 
-        if (isFinishStage == true)
+    private void Update()
+    {
+        if (_isFinishStage == true)
             MarkBeacon();
     }
 
     private void OnDestroy()
     {
-        finishPoint.eventMarkBeacon -= StartFinishStage;
+        _levelController.OnAllTrashCollected -= StartFinishStage;
     }
 
     private void MarkBeacon()
     {
-        Vector3 targetDir = finishPoint.transform.position - transform.position;
+        Vector3 targetDir = _markToFinishPoint.transform.position - transform.position;
         angle = Vector3.SignedAngle(targetDir, transform.forward,Vector3.up);
         if (angle > leftAngle)
         {
@@ -57,15 +69,15 @@ public class Beacon : MonoBehaviour
         timerText.text = StringTime.SecondToTimeString(timer.CurrentTime);
     }
 
-    private void StartFinishStage()
+    private void StartFinishStage(bool result)
     {
-        isFinishStage = true;
-        timer = Timer.CreateTimer(timeDurationOfFinish, true);
+        _isFinishStage = result;
+        timer = Timer.CreateTimer(timeDurationOfFinish, false);
         timer.OnTimeRanOut += TimeOver;
     }
 
     private void TimeOver()
     {
-        timer.OnTimeRanOut -= TimeOver;
+        _levelController.TimeOver();
     }
 }

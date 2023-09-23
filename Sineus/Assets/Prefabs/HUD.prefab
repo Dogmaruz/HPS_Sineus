@@ -202,7 +202,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 00/20
+  m_text: 00/00
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e5f71ab652207d442871008eb90f163a, type: 2}
   m_sharedMaterial: {fileID: -5760691389910465761, guid: e5f71ab652207d442871008eb90f163a, type: 2}
@@ -1189,13 +1189,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8657843527654858792}
+  - component: {fileID: 34179599}
   m_Layer: 5
   m_Name: Timer_Compas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8657843527654858792
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1217,8 +1218,26 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 300, y: 100}
+  m_SizeDelta: {x: 600, y: 100}
   m_Pivot: {x: 0.5, y: 1}
+--- !u!114 &34179599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8657843527654858799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd687300d24add746980eda669420806, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeDurationOfFinish: 10
+  leftAngle: 40
+  rightAngle: -40
+  leftArrow: {fileID: 8657843528718326272}
+  rightArrow: {fileID: 8657843526954629107}
+  timerText: {fileID: 8657843528376466484}
 --- !u!1 &8657843528376466490
 GameObject:
   m_ObjectHideFlags: 0

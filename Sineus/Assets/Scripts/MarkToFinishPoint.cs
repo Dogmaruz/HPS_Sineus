@@ -1,57 +1,56 @@
+using System;
 using UnityEngine;
-using UnityEngine.Events;
 using Zenject;
 
 public class MarkToFinishPoint : MonoBehaviour
 {
-    public UnityAction eventMarkBeacon;
-    //private UnityEvent playerInZone;
-    [SerializeField] private Transform player; // Получаем как то трансформу нашего жука а лучше его скрипт, смотря кто будет евент делать о финальном этапе забега
-    [SerializeField] private GameObject beaconFinish;
+    public Action<bool> OnMarkAchieved;
 
-    private bool isFinished;
+    private LevelController _levelController;
 
-    private GameManager _gameManager;
+    private bool _isTrashCollected = false;
 
     [Inject]
-    public void Construct(GameManager gameManager)
+    public void Construct(LevelController levelController)
     {
-        _gameManager = gameManager;
+        _levelController = levelController;
     }
 
-    void Start()
+    private void Start()
     {
-        beaconFinish.SetActive(false);
-        //Подписаться на событие завершения сбора мусора    += StartFinishStage()
+        gameObject.SetActive(false);
+        _levelController.OnAllTrashCollected += StartFinishStage;
     }
 
-
-    void Update()
+    private void OnDestroy()
     {
-        if (Input.GetKeyDown(KeyCode.P)) 
+        _levelController.OnAllTrashCollected -= StartFinishStage;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P)) //TODO debug
         {
-            StartFinishStage();
+            StartFinishStage(true); 
         }
-        
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.root.TryGetComponent(out Transform player))
+        if (_isTrashCollected == false) return;
+
+        var character = other.transform.root.GetComponent<CharacterMovement>();
+
+        if (character != null)
         {
-            isFinished = true; // Ну или в скрипт плаера отправить инфу. 
+            OnMarkAchieved?.Invoke(true);
+            _isTrashCollected = false;
         }
     }
 
-
-    private void OnDestroy()
+    public void StartFinishStage(bool result)
     {
-        //Отписаться на событие завершения сбора мусора
-    }
-
-    public void StartFinishStage()
-    {
-        beaconFinish.SetActive(true);
-        eventMarkBeacon?.Invoke();
+        gameObject.SetActive(result);
+        _isTrashCollected = result;
     }
 }

@@ -1,41 +1,72 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public class KillZone : MonoBehaviour
 {
-    [SerializeField] private float contractionRate = 1;
-    private Transform _transform;
-    private bool isStopped = false;
+    [SerializeField] private float m_contractionRate = 1;
 
-    private float timer;
+    [SerializeField] private int m_damage;
+
+    private LevelController _levelController;
+
+    private Transform _transform;
+    private Vector3 _startScale;
+
+    private bool _isStopped = false;
+
+    private float _timer;
+
+    [Inject]
+    public void Construct(LevelController levelController)
+    {
+        _levelController = levelController;
+    }
 
     private void Start()
     {
         _transform = GetComponent<Transform>();
+        _levelController.OnAllTrashCollected += DisableZone;
+        _startScale = _transform.localScale;
     }
 
     private void Update()
     {
-        if (timer > 0)
+        if (_timer > 0)
         {
-            timer -= Time.deltaTime;
+            _timer -= Time.deltaTime;
         }
         else
         {
-            isStopped = false;
+            _isStopped = false;
         }
 
-        if (_transform.localScale.x >= 0 && isStopped == false)
+        if (_transform.localScale.x >= 0 && _isStopped == false)
         {
-            float size = Time.deltaTime * contractionRate;
+            float size = Time.deltaTime * m_contractionRate;
             _transform.localScale -= new Vector3(size, size, 0);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        var player = other.transform.root.GetComponent<PlayerHP>();
+
+        if (player != null)
+        {
+            player.RemoveHealth(m_damage);
         }
     }
 
     public void StopMove(float time)
     {
-        isStopped = true;
-        timer = time;
+        _isStopped = true;
+        _timer = time;
+    }
+
+    private void DisableZone(bool _)
+    {
+        _transform.localScale = _startScale;
+
+        StopMove(float.MaxValue);
     }
 }
