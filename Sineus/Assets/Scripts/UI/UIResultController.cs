@@ -41,6 +41,10 @@ public class UIResultController : MonoBehaviour
 
     private void ShowResultPanel(bool result)
     {
+        Time.timeScale = 0;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+
         if (result == true)
         {
             m_winPanel.SetActive(true);
