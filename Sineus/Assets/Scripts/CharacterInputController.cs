@@ -4,11 +4,10 @@ public class CharacterInputController : MonoBehaviour
 {
     [SerializeField] private CharacterMovement characterMovement;
     [SerializeField] private Transform target;
+    [SerializeField] private float verticalSpeed;
 
     [SerializeField] private CameraController targetCamera;
 
-
-    private float dist;
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -18,17 +17,19 @@ public class CharacterInputController : MonoBehaviour
     private void Update()
     {
 
-        characterMovement.TargetDirectionControl = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Mouse Y") * 100, Input.GetAxis("Vertical"));
-      
+        characterMovement.TargetDirectionControl = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
 
         targetCamera.rotateControl = new Vector3(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
 
-        
+        targetCamera.ScrollDistanceCamera(Input.GetAxis("Mouse ScrollWheel"));
 
-
-            targetCamera.IsRotateTarget = true;     
-
+        if (characterMovement.TargetDirectionControl != Vector3.zero )
+        {
+            targetCamera.IsRotateTarget = true;
+        }
+        else
+            targetCamera.IsRotateTarget = false;
+ 
     }
-
 }

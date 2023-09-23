@@ -48,6 +48,7 @@ public class Timer : MonoBehaviour
         Timer timer = TimerCollector.AddComponent<Timer>();
 
         timer.maxTime = time;
+        timer.currentTime = time;
         timer.IsLoop = isLoop;
 
         return timer;
@@ -61,8 +62,9 @@ public class Timer : MonoBehaviour
         }
 
         Timer timer = TimerCollector.AddComponent<Timer>();
-
+        timer.currentTime = time;
         timer.maxTime = time;
+        
 
         return timer;
     }

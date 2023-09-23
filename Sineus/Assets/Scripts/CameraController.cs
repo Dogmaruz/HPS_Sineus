@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
@@ -25,32 +23,27 @@ public class CameraController : MonoBehaviour
     [SerializeField] private float distanceOffsetFromCollisionHit;
 
     [HideInInspector] public bool IsRotateTarget;
-    [HideInInspector] public Vector2 rotateControl;
+    [HideInInspector] public Vector3 rotateControl;
 
     private float deltaRotationX;
     private float deltaRotationY;
 
     private float currentDistance;
 
-    private float defaultDistanceCamera;
-    private float playerDistanceCamera;
     private Vector3 targetOffset;
-    private Vector3 defaultOffset;
 
     private void Start()
     {
-        defaultOffset = offset;
         targetOffset = offset;
-        defaultDistanceCamera = distanceCamera;
     }
     private void Update()
     {
         deltaRotationX += rotateControl.x * sensetive;
         deltaRotationY += rotateControl.y * sensetive;
 
+
         deltaRotationY = ClampAngle(deltaRotationY, minAngleLimitY, maxAngleLimitY);
 
-        // offset = Vector3.Lerp(offset, targetOffset, Time.deltaTime * sensetive);
         offset = Vector3.MoveTowards(offset, targetOffset, Time.deltaTime * offsetLerpRate);
 
         Quaternion finalRotation = Quaternion.Euler(-deltaRotationY, deltaRotationX, 0);
@@ -85,7 +78,7 @@ public class CameraController : MonoBehaviour
 
         if (IsRotateTarget == true)
         {
-            Quaternion targetRotation = Quaternion.Euler(transform.rotation.x, transform.eulerAngles.y, transform.eulerAngles.z);
+            Quaternion targetRotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, transform.rotation.z);
             target.rotation = Quaternion.RotateTowards(target.rotation, targetRotation, Time.deltaTime * rotateTargetLerpRate);
         }
     }
@@ -114,22 +107,5 @@ public class CameraController : MonoBehaviour
             angle -= 360;
 
         return Mathf.Clamp(angle, min, max);
-    }
-
-    public void SetTargetOffset(Vector3 _offset)
-    {
-        targetOffset = _offset;
-        playerDistanceCamera = distanceCamera;
-        distanceCamera = defaultDistanceCamera;
-        //distanceCamera = Mathf.Lerp(distanceCamera, targetOffset.y, Time.deltaTime * sensetive);
-
-
-    }
-
-    public void SetDefaultOffset()
-    {
-        targetOffset = defaultOffset;
-        distanceCamera = playerDistanceCamera;
-        // distanceCamera = Mathf.Lerp(distanceCamera, defaultDistanceCamera, Time.deltaTime * sensetive);
     }
 }
