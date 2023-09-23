@@ -22,8 +22,8 @@ public class MarkToFinishPoint : MonoBehaviour
     {
         gameObject.SetActive(false);
         _levelController.OnAllTrashCollected += StartFinishStage;
-        _audioSource = GetComponent<AudioSource>();
-        _audioSource.enabled = false;
+        //_audioSource = GetComponent<AudioSource>();
+        //_audioSource.enabled = false;
     }
 
     private void OnDestroy()
@@ -49,6 +49,6 @@ public class MarkToFinishPoint : MonoBehaviour
     {
         gameObject.SetActive(result);
         _isTrashCollected = result;
-        _audioSource.enabled = true;
+        //_audioSource.enabled = true;
     }
 }
