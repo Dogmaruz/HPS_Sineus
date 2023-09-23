@@ -4,21 +4,27 @@ public class CharacterMovement : MonoBehaviour
 {
     [Header("Movement")]
     [SerializeField] private float speedFly;
+    [SerializeField] private float upSpeed;
+
 
     private CharacterController characterController;
     public Vector3 TargetDirectionControl;
     public Vector3 DirectionControl;
     private Vector3 movementDirections;
-
+     Rigidbody rb;
+    
 
 
     private void Start()
     {
         characterController = GetComponent<CharacterController>();
+        rb = GetComponent<Rigidbody>();
     }
 
     private void Update()
     {
+      
+            
         Move();
     }
 
@@ -31,6 +37,11 @@ public class CharacterMovement : MonoBehaviour
         movementDirections = DirectionControl * speedFly;
 
 
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            movementDirections.y = upSpeed;
+          
+        }
         movementDirections = transform.TransformDirection(movementDirections);
 
         characterController.Move(movementDirections * Time.deltaTime);

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
@@ -25,10 +23,11 @@ public class CameraController : MonoBehaviour
     [SerializeField] private float distanceOffsetFromCollisionHit;
 
     [HideInInspector] public bool IsRotateTarget;
-    [HideInInspector] public Vector2 rotateControl;
+    [HideInInspector] public Vector3 rotateControl;
 
     private float deltaRotationX;
     private float deltaRotationY;
+    private float deltaRotationZ;
 
     private float currentDistance;
 
@@ -47,6 +46,7 @@ public class CameraController : MonoBehaviour
     {
         deltaRotationX += rotateControl.x * sensetive;
         deltaRotationY += rotateControl.y * sensetive;
+
 
         deltaRotationY = ClampAngle(deltaRotationY, minAngleLimitY, maxAngleLimitY);
 
@@ -85,7 +85,7 @@ public class CameraController : MonoBehaviour
 
         if (IsRotateTarget == true)
         {
-            Quaternion targetRotation = Quaternion.Euler(transform.rotation.x, transform.eulerAngles.y, transform.eulerAngles.z);
+            Quaternion targetRotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, transform.rotation.z);
             target.rotation = Quaternion.RotateTowards(target.rotation, targetRotation, Time.deltaTime * rotateTargetLerpRate);
         }
     }
