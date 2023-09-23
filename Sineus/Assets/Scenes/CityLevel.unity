@@ -10023,7 +10023,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fe5b455aa51edc42827aa1ea18a1de5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_newBuildingsPrefabs: []
+  m_newBuildingsPrefabs:
+  - {fileID: 4100583889950738489, guid: c3402aa485235ce418a6be8524d00257, type: 3}
+  - {fileID: 5970954506137193116, guid: 8bf31b447e7b0d74e8f1be422bf3bcd9, type: 3}
+  - {fileID: 5289354431084509898, guid: 744d834fab118b94eb87b4753d826b24, type: 3}
+  - {fileID: 5200874023405006322, guid: 4fee2c6362ed43047b14d524cbeb2f26, type: 3}
+  - {fileID: 2941098007842495698, guid: 21d1211310c93d14aa96d429fe867db1, type: 3}
+  - {fileID: 4467485623537409276, guid: 0e7cdc5e77b440647aa8812032901127, type: 3}
+  - {fileID: 7299214263838190472, guid: a288be0a95c9b1a47a281b40dc911dae, type: 3}
+  - {fileID: 5031749043917249301, guid: 54fe5bbad6379dc4db5d1664144a51f0, type: 3}
 --- !u!1 &367504940 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5618513000300056629, guid: a93298d4e9fa037429db39b017cb61ee, type: 3}
@@ -41091,7 +41099,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5072135224663109816, guid: f68d2779e76d4c94d9cf86c7a0c677c7, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9220737497015702069, guid: f68d2779e76d4c94d9cf86c7a0c677c7, type: 3}
       propertyPath: m_contractionRate
@@ -56414,7 +56422,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!20 &1961889358086494750
 Camera:
   m_ObjectHideFlags: 0
