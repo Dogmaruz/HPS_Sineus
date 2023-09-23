@@ -4,9 +4,10 @@ using Zenject;
 
 public class UIResultController : MonoBehaviour
 {
-    [SerializeField] private GameObject m_resultPanel;
+    [SerializeField] private GameObject m_winPanel;
+    [SerializeField] private GameObject m_losePanel;
 
-    [SerializeField] private TMP_Text m_finalCountText;
+    [SerializeField] private TMP_Text[] m_finalCountText;
 
     private GameManager _gameManager;
     private LevelController _levelController;
@@ -24,21 +25,32 @@ public class UIResultController : MonoBehaviour
         _levelController.OnFinishLevel += ShowResultPanel;
     }
 
+    private void Start()
+    {
+        m_winPanel.SetActive(false);
+        m_losePanel.SetActive(false);
+    }
+
     private void UpdateFinalCountText(int count)
     {
-        m_finalCountText.text = count.ToString();
+        foreach (var text in m_finalCountText)
+        {
+            text.text = count.ToString();
+        }
     }
 
     private void ShowResultPanel(bool result)
     {
+        Time.timeScale = 0;
+
         if (result == true)
         {
-            m_resultPanel.SetActive(true);
+            m_winPanel.SetActive(true);
         }
 
         if (result == false)
         {
-            //TODO LosePanel
+            m_losePanel.SetActive(true);
         }
     }
 }

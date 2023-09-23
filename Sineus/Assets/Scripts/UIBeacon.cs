@@ -72,8 +72,12 @@ public class UIBeacon : MonoBehaviour
     private void StartFinishStage(bool result)
     {
         _isFinishStage = result;
+
         timer = Timer.CreateTimer(timeDurationOfFinish, false);
+
         timer.OnTimeRanOut += TimeOver;
+
+        _levelController.OnAllTrashCollected -= StartFinishStage;
     }
 
     private void TimeOver()

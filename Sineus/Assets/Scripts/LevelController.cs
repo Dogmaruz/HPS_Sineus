@@ -50,6 +50,6 @@ public class LevelController : MonoBehaviour
 
     public void TimeOver()
     {
-        OnFinishLevel?.Invoke(false);
+        LoseLevel();
     }
 }
