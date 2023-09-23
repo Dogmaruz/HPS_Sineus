@@ -54,7 +54,7 @@ public class CameraController : MonoBehaviour
         float targetDistance = distanceCamera;
         RaycastHit hit;
 
-        if (Physics.Linecast(target.position + new Vector3(0, offset.y, 0), finalPosition, out hit) == true)
+        if (Physics.Linecast(target.position + new Vector3(0, offset.y, 0), finalPosition, out hit) == true && hit.collider.isTrigger == false )
         {
             float distanceToHit = Vector3.Distance(target.position + new Vector3(0, offset.y, 0), hit.point);
 

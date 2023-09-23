@@ -67,6 +67,8 @@ public class UIBeacon : MonoBehaviour
         }
 
         timerText.text = StringTime.SecondToTimeString(timer.CurrentTime);
+        if(timer.CurrentTime < 15)
+            timerText.color = Color.red;
     }
 
     private void StartFinishStage(bool result)

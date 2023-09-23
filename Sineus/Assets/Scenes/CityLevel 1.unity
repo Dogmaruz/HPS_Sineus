@@ -53854,6 +53854,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1155976712876938331, guid: 614f187695cc8c24e8ccf13de37a690f, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: d90882c7ee0aa824d887ba34e8309009, type: 2}
     - target: {fileID: 4480004351741140461, guid: 614f187695cc8c24e8ccf13de37a690f, type: 3}
       propertyPath: leftArrow
       value: 
@@ -53953,9 +53957,9 @@ MonoBehaviour:
   minDistanceCamera: 4
   maxDistanceCamera: 7
   sensetive: 2
-  offset: {x: 0, y: 0, z: 0}
+  offset: {x: 0, y: 1, z: -1}
   offsetLerpRate: 3
-  rotateTargetLerpRate: 800
+  rotateTargetLerpRate: 250
   maxAngleLimitY: 20
   minAngleLimitY: -30
   minDistance: 0.5
