@@ -47,4 +47,9 @@ public class LevelController : MonoBehaviour
     {
         OnFinishLevel?.Invoke(result);
     }
+
+    public void TimeOver()
+    {
+        OnFinishLevel?.Invoke(false);
+    }
 }
