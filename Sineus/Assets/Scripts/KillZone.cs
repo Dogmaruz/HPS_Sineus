@@ -1,19 +1,32 @@
 using UnityEngine;
+using Zenject;
 
 public class KillZone : MonoBehaviour
 {
-    [SerializeField] private float m_ContractionRate = 1;
+    [SerializeField] private float m_contractionRate = 1;
 
-    [SerializeField] private int m_Damage;
+    [SerializeField] private int m_damage;
+
+    private LevelController _levelController;
 
     private Transform _transform;
+    private Vector3 _startScale;
+
     private bool _isStopped = false;
 
     private float _timer;
 
+    [Inject]
+    public void Construct(LevelController levelController)
+    {
+        _levelController = levelController;
+    }
+
     private void Start()
     {
         _transform = GetComponent<Transform>();
+        _levelController.OnAllTrashCollected += DisableZone;
+        _startScale = _transform.localScale;
     }
 
     private void Update()
@@ -29,7 +42,7 @@ public class KillZone : MonoBehaviour
 
         if (_transform.localScale.x >= 0 && _isStopped == false)
         {
-            float size = Time.deltaTime * m_ContractionRate;
+            float size = Time.deltaTime * m_contractionRate;
             _transform.localScale -= new Vector3(size, size, 0);
         }
     }
@@ -40,7 +53,7 @@ public class KillZone : MonoBehaviour
 
         if (player != null)
         {
-            player.RemoveHealth(m_Damage);
+            player.RemoveHealth(m_damage);
         }
     }
 
@@ -48,5 +61,12 @@ public class KillZone : MonoBehaviour
     {
         _isStopped = true;
         _timer = time;
+    }
+
+    private void DisableZone(bool _)
+    {
+        _transform.localScale = _startScale;
+
+        StopMove(float.MaxValue);
     }
 }

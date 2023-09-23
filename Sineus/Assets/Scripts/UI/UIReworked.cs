@@ -24,30 +24,41 @@ public class UIReworked : MonoBehaviour
 
     private void Awake()
     {
+        _levelController.OnAllTrashCollected += SetTimerCompasVisibility;
         _gameManager.OnReworked += UpdateText;
     }
 
     private void Start()
     {
         _winCount = _levelController.TrashWinCount;
+
+        UpdateText(0);
+
+        m_bonusText.gameObject.SetActive(false);
+        m_timerCompas.SetActive(false);
     }
 
     private void UpdateText(int count)
     {
-        if (count <= _winCount)
+        if (count < _winCount)
         {
             m_reworkedText.text = count.ToString() + "/" + _winCount;
         }
-        else
+        else if (count == _winCount)
         {
-            if (m_bonusText.gameObject.activeSelf == false)
-            {
-                m_bonusText.gameObject.SetActive(true);
-
-                m_timerCompas.SetActive(true);
-            }
-
-            m_bonusText.text = "+ " + Mathf.Abs(_winCount - count).ToString();
+            m_reworkedText.text = count.ToString() + "/" + _winCount;
         }
+        else if (count > _winCount)
+        {
+            m_bonusText.text = "+ " + Mathf.Abs(_winCount - count).ToString();
+
+        }
+    }
+
+    private void SetTimerCompasVisibility(bool result)
+    {
+        m_timerCompas.SetActive(result);
+
+        m_bonusText.gameObject.SetActive(result);
     }
 }

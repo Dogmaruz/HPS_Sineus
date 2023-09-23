@@ -21,7 +21,7 @@ public class UIResultController : MonoBehaviour
     private void Awake()
     {
         _gameManager.OnLevelCompleted += UpdateFinalCountText;
-        _levelController.OnLevelFinished += ShowResultPanel;
+        _levelController.OnFinishLevel += ShowResultPanel;
     }
 
     private void UpdateFinalCountText(int count)
