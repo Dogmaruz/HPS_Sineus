@@ -6,6 +6,7 @@ public class KillZone : MonoBehaviour
     [SerializeField] private float m_contractionRate = 1;
 
     [SerializeField] private int m_damage;
+    public int Damage => m_damage;
 
     private LevelController _levelController;
 
@@ -53,15 +54,7 @@ public class KillZone : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        var player = other.transform.GetComponent<PlayerHP>();
-        print(other);
-        if (player != null)
-        {
-            player.RemoveHealth(m_damage);
-        }
-    }
+    
 
     public void StopMove(float time)
     {
