@@ -63,7 +63,7 @@ public class BuildingsController : MonoBehaviour
     {
         var rnd = Random.Range(0, m_newBuildingsPrefabs.Count);
 
-        var newBuilding = _factory.Create(m_newBuildingsPrefabs[rnd].gameObject, transform.position, Quaternion.identity, _parentTransform);
+        var newBuilding = _factory.Create(m_newBuildingsPrefabs[rnd].gameObject, oldBuilding.transform.position, oldBuilding.transform.rotation, _parentTransform);
 
         Destroy(oldBuilding.gameObject);
     }
@@ -78,6 +78,7 @@ public class BuildingsController : MonoBehaviour
         if (step == _stepsCount)
         {
             ChangeRemainingBuildings();
+            _gameManager.OnReworked -= ChangeBuildings;
         }
     }
 
