@@ -34,7 +34,11 @@ public class CameraController : MonoBehaviour
 
     private void Start()
     {
-        targetOffset = offset;
+        if (ÑharacterizationEcomorf.Instance.AgilityChar > 5)
+        {
+            rotateTargetLerpRate = rotateTargetLerpRate + (ÑharacterizationEcomorf.Instance.AgilityChar - 5) + 100;
+        }    
+            targetOffset = offset;
     }
     private void Update()
     {

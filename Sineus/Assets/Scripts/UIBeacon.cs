@@ -44,6 +44,7 @@ public class UIBeacon : MonoBehaviour
 
     private void OnDestroy()
     {
+        if(_levelController != null)
         _levelController.OnAllTrashCollected -= StartFinishStage;
     }
 

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CharacterInputController : MonoBehaviour
 {
@@ -10,6 +11,13 @@ public class CharacterInputController : MonoBehaviour
 
     private void Start()
     {
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+
+        }
+        else
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }

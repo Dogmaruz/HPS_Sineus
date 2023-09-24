@@ -8,6 +8,11 @@ public class Tornado : MonoBehaviour
     private bool _canHit;
     private float _timer;
 
+    private void Start()
+    {
+        m_damage = m_damage - (ÑharacterizationEcomorf.Instance.AdapticChar - 5) - 5;
+    }
+
     private void Update()
     {
         _timer += Time.deltaTime;

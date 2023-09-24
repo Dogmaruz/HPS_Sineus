@@ -12,7 +12,11 @@ public class PlayerHP : MonoBehaviour
 
     private void Start()
     {
-        _currentHP = m_MaxHitPoints;
+        if (ÑharacterizationEcomorf.Instance.HillChar > 5)
+        {
+            m_MaxHitPoints = m_MaxHitPoints + (ÑharacterizationEcomorf.Instance.HillChar - 5) + 20;
+        }
+            _currentHP = m_MaxHitPoints;
     }
 
     public void AddHealth(int value)
