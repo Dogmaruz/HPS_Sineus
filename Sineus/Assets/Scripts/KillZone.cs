@@ -65,7 +65,7 @@ public class KillZone : MonoBehaviour
 
     private void DisableZone(bool _)
     {
-        _transform.localScale = _startScale;
+        _transform.localScale = new Vector3(1500, 1500, 1500);
 
         StopMove(float.MaxValue);
     }
