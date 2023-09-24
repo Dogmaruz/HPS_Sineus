@@ -52,7 +52,6 @@ public class KillZoneController : MonoBehaviour
         {
             _killZone = killZone;
             _isInZone = false;
-            print(_isInZone);
         }
         else
             _killZone = null;

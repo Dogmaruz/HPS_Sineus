@@ -42,9 +42,9 @@ GameObject:
   - component: {fileID: 5072135224663109811}
   - component: {fileID: 2618198654776429028}
   - component: {fileID: 7136367187094975882}
-  - component: {fileID: 942022914}
   - component: {fileID: 9220737497015702069}
   - component: {fileID: 2129254149}
+  - component: {fileID: 1844940682}
   m_Layer: 3
   m_Name: KillZone
   m_TagString: Untagged
@@ -118,20 +118,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &942022914
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5072135224663109816}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.6
-  m_Height: 2.0000005
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &9220737497015702069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,3 +149,17 @@ MonoBehaviour:
   blendDistance: 3
   weight: 1
   priority: 10
+--- !u!64 &1844940682
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5072135224663109816}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2534964839176971238, guid: d5ba8f2f903b17d41b715abaf8e81892, type: 3}
