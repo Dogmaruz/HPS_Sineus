@@ -4,6 +4,7 @@ using Zenject;
 public class KillZone : MonoBehaviour
 {
     [SerializeField] private float m_contractionRate = 1;
+    [SerializeField] public Transform radiusPoint;
 
     private LevelController _levelController;
 

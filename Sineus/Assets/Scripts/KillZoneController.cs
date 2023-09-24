@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Zenject;
 
@@ -7,8 +8,12 @@ public class KillZoneController : MonoBehaviour
     [SerializeField] private float m_hitRate = 1;
     private PlayerHP _playerHP;
     private bool _isInZone;
+    public bool IsInZone => _isInZone;
 
     private float _timer;
+
+    private KillZone _killZone;
+    public KillZone GetKillZone() { if (_killZone) return _killZone; else return null; }
 
     [Inject]
     public void Construct(PlayerHP playerHP)
@@ -31,21 +36,25 @@ public class KillZoneController : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        var killZone = other.transform.GetComponent<KillZone>();
 
-        if (killZone != null)
+        if (other.TryGetComponent(out KillZone killZone))
         {
+            _killZone = killZone;
             _isInZone = true;
         }
+        else
+            _killZone = null;
     }
 
     private void OnTriggerExit(Collider other)
     {
-        var killZone = other.transform.GetComponent<KillZone>();
-
-        if (killZone != null)
+        if (other.TryGetComponent(out KillZone killZone))
         {
+            _killZone = killZone;
             _isInZone = false;
+            print(_isInZone);
         }
+        else
+            _killZone = null;
     }
 }
