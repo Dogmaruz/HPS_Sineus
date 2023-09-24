@@ -5,13 +5,13 @@ public class ShieldEffect : MonoBehaviour
     private float _lifeTime = 100;
     private float _timer;
     private float _stopTime;
-
+    /*
     private Collider _collider;
 
     private void Start()
     {
         _collider = GetComponent<Collider>();
-    }
+    }*/
 
     private void Update()
     {
@@ -37,7 +37,7 @@ public class ShieldEffect : MonoBehaviour
 
         if (killZone != null)
         {
-            _collider.enabled = false;
+            //_collider.enabled = false;
 
             killZone.StopMove(_stopTime);
         }

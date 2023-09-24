@@ -10255,6 +10255,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BackgroundClip
       objectReference: {fileID: 0}
+    - target: {fileID: 8872669804446539031, guid: a27cd07387366e34188b5ff798de7c5f, type: 3}
+      propertyPath: m_backgroundClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 1173f82f669bf0a42943b02fdecc9e06, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a27cd07387366e34188b5ff798de7c5f, type: 3}
 --- !u!64 &9223024434479370398

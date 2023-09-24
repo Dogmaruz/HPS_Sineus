@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_damage: 5
-  m_hitRate: 0.1
+  m_hitRate: 0.2
 --- !u!114 &2105436334059956732
 MonoBehaviour:
   m_ObjectHideFlags: 0
