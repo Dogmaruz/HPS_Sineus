@@ -21,6 +21,14 @@ public class KillZoneController : MonoBehaviour
         _playerHP = playerHP;
     }
 
+    private void Start()
+    {
+        if (ÑharacterizationEcomorf.Instance.SpeedChar > 5)
+        {
+            m_damage = m_damage - (ÑharacterizationEcomorf.Instance.AdapticChar - 5) - 5;
+        }
+    }
+
     private void Update()
     {
         if (_isInZone == true) return;

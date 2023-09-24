@@ -13,6 +13,8 @@ public class CharacterMovement : MonoBehaviour
     private void Start()
     {
         characterController = GetComponent<CharacterController>();
+        if (ÑharacterizationEcomorf.Instance.SpeedChar > 5)
+            speedFly = speedFly  + (ÑharacterizationEcomorf.Instance.SpeedChar - 5) + 4;
 
     }
 
