@@ -69,6 +69,7 @@ public class TornadoContainer : MonoBehaviour
         if (step == _trashesCount)
         {
             DestroyRemainingTornados();
+            _gameManager.OnReworked -= RemoveTornado;
         }
     }
 

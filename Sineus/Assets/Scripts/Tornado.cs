@@ -10,7 +10,7 @@ public class Tornado : MonoBehaviour
 
     private void Start()
     {
-        m_damage = m_damage - (ÑharacterizationEcomorf.Instance.AdapticChar - 5) - 5;
+        //m_damage = m_damage - (ÑharacterizationEcomorf.Instance.AdapticChar - 5) - 5;
     }
 
     private void Update()
