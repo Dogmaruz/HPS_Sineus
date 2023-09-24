@@ -28,37 +28,92 @@ public class UIPanelCharacteristics : MonoBehaviour
     private void Start()
     {
         switch (typeChar)
-        { 
+        {
             case TypeChar.Speed:
                 numChar = ÑharacterizationEcomorf.Instance.SpeedChar;
                 break;
-                case TypeChar.Agility:
+            case TypeChar.Agility:
                 numChar = ÑharacterizationEcomorf.Instance.AgilityChar;
                 break;
-                case TypeChar.Hill:
+            case TypeChar.Hill:
                 numChar = ÑharacterizationEcomorf.Instance.HillChar;
                 break;
-                case TypeChar.Adaptic:
+            case TypeChar.Adaptic:
                 numChar = ÑharacterizationEcomorf.Instance.AdapticChar;
                 break;
 
         }
-            
+
         numTextChar.text = numChar.ToString();
     }
 
+    private int num2;
+
+    private void Type()
+    {
+               switch (typeChar)
+        {
+            case TypeChar.Speed:
+                num2 = ÑharacterizationEcomorf.Instance.SpeedChar;
+                break;
+            case TypeChar.Agility:
+                num2 = ÑharacterizationEcomorf.Instance.AgilityChar;
+                break;
+            case TypeChar.Hill:
+                num2 = ÑharacterizationEcomorf.Instance.HillChar;
+                break;
+            case TypeChar.Adaptic:
+                num2 = ÑharacterizationEcomorf.Instance.AdapticChar;
+                break;
+
+        }
+    }
+        
     public void ClickButtonUp()
     {
-        if (ÑharacterizationEcomorf.Instance.AddSpeedChar())
+        if (TypeChar.Speed == typeChar &&  ÑharacterizationEcomorf.Instance.AddSpeedChar())
         {
             numChar++;
             numTextChar.text = numChar.ToString();
-        }          
+        }
+        if (TypeChar.Agility == typeChar && ÑharacterizationEcomorf.Instance.AddAgilityChar())
+        {
+            numChar++;
+            numTextChar.text = numChar.ToString();
+        }
+        if (TypeChar.Hill == typeChar && ÑharacterizationEcomorf.Instance.AddHillChar())
+        {
+            numChar++;
+            numTextChar.text = numChar.ToString();
+        }
+        if (TypeChar.Adaptic == typeChar && ÑharacterizationEcomorf.Instance.AdddapticChar())
+        {
+            numChar++;
+            numTextChar.text = numChar.ToString();
+        }
     }
 
     public void ClickButtonDown()
     {
-        if (ÑharacterizationEcomorf.Instance.DrawSpeedChar(numChar))
+        if (TypeChar.Speed == typeChar && ÑharacterizationEcomorf.Instance.DrawSpeedChar(numChar))
+        {
+            numChar --;
+            numTextChar.text = numChar.ToString();
+        }        
+        
+        if (TypeChar.Agility == typeChar && ÑharacterizationEcomorf.Instance.DrawAgilityChar(numChar))
+        {
+            numChar --;
+            numTextChar.text = numChar.ToString();
+        }       
+        
+        if (TypeChar.Hill == typeChar && ÑharacterizationEcomorf.Instance.DrawHillChar(numChar))
+        {
+            numChar --;
+            numTextChar.text = numChar.ToString();
+        }       
+        
+        if (TypeChar.Adaptic == typeChar && ÑharacterizationEcomorf.Instance.DrawAdapticChar(numChar))
         {
             numChar --;
             numTextChar.text = numChar.ToString();

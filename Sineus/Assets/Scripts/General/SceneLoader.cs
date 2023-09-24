@@ -10,7 +10,7 @@ public class SceneLoader : MonoBehaviour
         Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        SceneManager.LoadScene(MAIN_MENU_SCENE_TITLE);
+        SceneManager.LoadScene("MarketScene");
     }
 
     public void StartLevel()

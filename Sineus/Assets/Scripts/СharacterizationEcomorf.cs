@@ -1,5 +1,6 @@
 
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ÑharacterizationEcomorf : SingletonBase<ÑharacterizationEcomorf>
 {
@@ -9,10 +10,35 @@ public class ÑharacterizationEcomorf : SingletonBase<ÑharacterizationEcomorf>
     public int AgilityChar { get; private set; } = 5;
     public int AdapticChar { get; private set; } = 5;
 
-    public int Score;
+     [SerializeField]public int Score;
+
+    private LevelController levelController;
+    private bool isLevelScene;
+    private void Start()
+    {
+
+        SceneManager.activeSceneChanged += Initialization;
+        print("sdfd");
+        if (SceneManager.GetActiveScene().buildIndex != 1)
+        {
+            isLevelScene = false;
+        }
+        else
+        {
+            isLevelScene = true;
+            levelController = FindAnyObjectByType<LevelController>();
+        }
+            
 
 
-    public bool AddSpeedChar()
+    }
+
+    void Initialization(Scene current, Scene next)
+    {
+
+        SetScore();
+    }
+        public bool AddSpeedChar()
     {
         if (DrawScoree() == true)
         {
@@ -124,6 +150,30 @@ public class ÑharacterizationEcomorf : SingletonBase<ÑharacterizationEcomorf>
         else
             return false;
           
+    }
+
+
+    private void SetScore()
+    {
+        if (SceneManager.GetActiveScene().buildIndex != 1)
+        {
+            isLevelScene = false;
+        }
+        else
+        {
+            isLevelScene = true;
+            levelController = FindAnyObjectByType<LevelController>();
+        }
+    }
+
+
+    private void Update()
+    {
+
+        if (isLevelScene == true)
+        {
+            Score = levelController.Score;
+        }
     }
 
 }
