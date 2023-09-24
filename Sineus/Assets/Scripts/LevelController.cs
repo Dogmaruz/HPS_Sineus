@@ -14,6 +14,9 @@ public class LevelController : MonoBehaviour
     private PlayerHP _playerHP;
     private MarkToFinishPoint _markToFinishPoint;
 
+    private int _score;
+    public int Score => _score;
+
     [Inject]
     public void Construct(IEntityFactory entityFactory, GameManager gameManager, PlayerHP playerHP, MarkToFinishPoint markToFinishPoint)
     {
@@ -31,6 +34,8 @@ public class LevelController : MonoBehaviour
 
     private void CheckWin(int score)
     {
+        _score = score;
+
         if (score >= m_TrashWinCount)
         {
             _gameManager.LevelCompleted();

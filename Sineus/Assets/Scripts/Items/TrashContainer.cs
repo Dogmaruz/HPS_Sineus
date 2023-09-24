@@ -3,8 +3,7 @@ using UnityEngine;
 
 public class TrashContainer : MonoBehaviour
 {
-
-    public List<Trash> Trashes;
+    private List<Trash> Trashes;
 
     private void Start()
     {
