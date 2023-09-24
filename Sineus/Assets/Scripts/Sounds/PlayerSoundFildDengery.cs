@@ -10,8 +10,8 @@ public class PlayerSoundFildDengery : MonoBehaviour
     [SerializeField] private float distSoundFieldDanger;
 
    [SerializeField] private KillZoneController m_controllerKillZone;
-
-    private KillZone _killZonde;
+    
+    private KillZone _killZone;
 
     private BackgroundSoundPlayer _soundPlayer;
 
@@ -19,7 +19,7 @@ public class PlayerSoundFildDengery : MonoBehaviour
     public void Construct(BackgroundSoundPlayer soundPlayer, KillZone killZone)
     {
         _soundPlayer = soundPlayer;
-        _killZonde = killZone;
+        _killZone = killZone;
     }
 
     private void Update()
@@ -33,11 +33,11 @@ public class PlayerSoundFildDengery : MonoBehaviour
         m_controllerKillZone.GetKillZone();
         if (m_controllerKillZone != null)
         {
-           var colliderMesh = _killZonde.transform.GetComponent<CapsuleCollider>();
+           var colliderMesh = _killZone.GetComponent<CapsuleCollider>();
 
              
             var size = colliderMesh.bounds.center;
-            var distR = Vector3.Distance(_killZonde.radiusPoint.transform.position, size);
+            var distR = Vector3.Distance(_killZone.radiusPoint.transform.position, size);
             //print(Vector3.Distance(transform.position, size));
             print(distR);
             var asdf = distR - distSoundFieldDanger;

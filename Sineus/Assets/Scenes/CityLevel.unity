@@ -5393,6 +5393,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 6310091440500997427, guid: 96ba3325b3b816d40a48d667ca267ece, type: 3}
+      propertyPath: m_killZone
+      value: 
+      objectReference: {fileID: 1844940676}
+    - target: {fileID: 6310091440500997427, guid: 96ba3325b3b816d40a48d667ca267ece, type: 3}
       propertyPath: m_playerHP
       value: 
       objectReference: {fileID: 719707267}
@@ -19106,7 +19110,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6273302325043724782, guid: 614f187695cc8c24e8ccf13de37a690f, type: 3}
   m_PrefabInstance: {fileID: 719707266}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2104425336}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4bb2aa65e9601854a95e90d33cdc3166, type: 3}
@@ -44824,14 +44828,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: KillZone
       objectReference: {fileID: 0}
-    - target: {fileID: 5072135224663109816, guid: f68d2779e76d4c94d9cf86c7a0c677c7, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9220737497015702069, guid: f68d2779e76d4c94d9cf86c7a0c677c7, type: 3}
-      propertyPath: m_contractionRate
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f68d2779e76d4c94d9cf86c7a0c677c7, type: 3}
 --- !u!1001 &1565336136
@@ -52191,6 +52187,17 @@ MonoBehaviour:
   affectsNavigation: 1
   userData: -1
   externallyManaged: 0
+--- !u!114 &1844940676 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9220737497015702069, guid: f68d2779e76d4c94d9cf86c7a0c677c7, type: 3}
+  m_PrefabInstance: {fileID: 1563175593}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b893959fda851d84387559e6837ba17a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1846635039
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -58972,6 +58979,38 @@ MonoBehaviour:
   affectsNavigation: 1
   userData: -1
   externallyManaged: 0
+--- !u!1 &2104425336 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4480004351741140470, guid: 614f187695cc8c24e8ccf13de37a690f, type: 3}
+  m_PrefabInstance: {fileID: 719707266}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2104425337 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2443043763590414628, guid: 614f187695cc8c24e8ccf13de37a690f, type: 3}
+  m_PrefabInstance: {fileID: 719707266}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2104425336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c56482186f101914580d1eb60c793e96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2104425345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2104425336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68014c2a758c73349a4ebcca247044f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _clipPlayerFieldDanger: {fileID: 8300000, guid: 03623efad85d6904c9dfe3a7d417c6f5, type: 3}
+  m_volume: 1
+  distSoundFieldDanger: 10
+  m_controllerKillZone: {fileID: 2104425337}
 --- !u!1001 &2105165195
 PrefabInstance:
   m_ObjectHideFlags: 0
