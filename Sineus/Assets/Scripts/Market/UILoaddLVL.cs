@@ -10,6 +10,6 @@ public class UILoaddLVL : MonoBehaviour
         Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        SceneManager.LoadScene("CityLevel");
+        SceneManager.LoadScene("Menu");
     }
 }
