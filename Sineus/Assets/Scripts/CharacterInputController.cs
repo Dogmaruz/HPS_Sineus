@@ -16,9 +16,9 @@ public class CharacterInputController : MonoBehaviour
 
     private void Update()
     {
-
         characterMovement.TargetDirectionControl = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
+        if (targetCamera == null) return;
 
         targetCamera.rotateControl = new Vector3(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
 
@@ -30,6 +30,5 @@ public class CharacterInputController : MonoBehaviour
         }
         else
             targetCamera.IsRotateTarget = false;
- 
     }
 }
