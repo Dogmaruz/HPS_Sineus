@@ -18,7 +18,7 @@ public class ÑharacterizationEcomorf : SingletonBase<ÑharacterizationEcomorf>
     {
 
         SceneManager.activeSceneChanged += Initialization;
-        print("sdfd");
+
         if (SceneManager.GetActiveScene().buildIndex != 1)
         {
             isLevelScene = false;
