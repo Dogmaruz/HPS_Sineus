@@ -19,4 +19,9 @@ public class GameManager
     {
         OnLevelCompleted?.Invoke(_reworked);
     }
+
+    public void ResetCount()
+    {
+        _reworked = 0;
+    }
 }

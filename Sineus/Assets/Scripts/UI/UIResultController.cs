@@ -60,5 +60,7 @@ public class UIResultController : MonoBehaviour
         {
             m_losePanel.SetActive(true);
         }
+
+        _gameManager.ResetCount();
     }
 }

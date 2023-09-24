@@ -44,6 +44,11 @@ public class BuildingsController : MonoBehaviour
         Shuffle(_oldBuildings);
     }
 
+    private void OnDestroy()
+    {
+        _gameManager.OnReworked -= ChangeBuildings;
+    }
+
     private void Shuffle(List<OldBuilding> array)
     {
         var random = new System.Random();
