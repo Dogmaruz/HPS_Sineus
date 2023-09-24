@@ -32,6 +32,13 @@ public class LevelController : MonoBehaviour
         _markToFinishPoint.OnMarkAchieved += FinishLevel;
     }
 
+    private void OnDestroy()
+    {
+        _gameManager.OnReworked -= CheckWin;
+        _playerHP.OnPlayerDeath -= LoseLevel;
+        _markToFinishPoint.OnMarkAchieved -= FinishLevel;
+    }
+
     private void CheckWin(int score)
     {
         _score = score;

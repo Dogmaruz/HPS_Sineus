@@ -40,6 +40,11 @@ public class GrassChanger : MonoBehaviour
         _blueStep = (m_targetColor.b - _startColor.b) / _stepsCount;
     }
 
+    private void OnDestroy()
+    {
+        _gameManager.OnReworked -= SwitchColor;
+    }
+
     private void SwitchColor(int step)
     {
         _material.color = _startColor + new Color(_redStep * step, _greenStep * step, _blueStep * step);

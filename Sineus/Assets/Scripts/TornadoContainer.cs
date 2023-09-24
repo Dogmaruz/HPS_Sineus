@@ -37,6 +37,11 @@ public class TornadoContainer : MonoBehaviour
         Shuffle(_tornados);
     }
 
+    private void OnDestroy()
+    {
+        _gameManager.OnReworked -= RemoveTornado;
+    }
+
     private void Shuffle(List<Tornado> array)
     {
         var random = new System.Random();

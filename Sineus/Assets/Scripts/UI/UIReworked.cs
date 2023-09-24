@@ -27,6 +27,11 @@ public class UIReworked : MonoBehaviour
         _levelController.OnAllTrashCollected += SetTimerCompasVisibility;
         _gameManager.OnReworked += UpdateText;
     }
+    private void OnDestroy()
+    {
+        _levelController.OnAllTrashCollected -= SetTimerCompasVisibility;
+        _gameManager.OnReworked -= UpdateText;
+    }
 
     private void Start()
     {

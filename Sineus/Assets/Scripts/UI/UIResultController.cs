@@ -25,6 +25,12 @@ public class UIResultController : MonoBehaviour
         _levelController.OnFinishLevel += ShowResultPanel;
     }
 
+    private void OnDestroy()
+    {
+        _gameManager.OnLevelCompleted -= UpdateFinalCountText;
+        _levelController.OnFinishLevel -= ShowResultPanel;
+    }
+
     private void Start()
     {
         m_winPanel.SetActive(false);

@@ -28,6 +28,11 @@ public class KillZone : MonoBehaviour
         _startScale = _transform.localScale;
     }
 
+    private void OnDestroy()
+    {
+        _levelController.OnAllTrashCollected -= DisableZone;
+    }
+
     private void Update()
     {
         if (_timer > 0)
