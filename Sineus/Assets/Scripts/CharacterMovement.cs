@@ -18,21 +18,23 @@ public class CharacterMovement : MonoBehaviour
 
     }
 
-    private void FixedUpdate()
+    private void Update()
     {                
         Move();
     }
 
     private void Move()
     {
-        DirectionControl = Vector3.MoveTowards(DirectionControl, TargetDirectionControl, Time.fixedDeltaTime);
+        //DirectionControl = Vector3.MoveTowards(DirectionControl, TargetDirectionControl, Time.fixedDeltaTime);
 
 
 
-        movementDirections = DirectionControl * speedFly * Time.fixedDeltaTime;
+        movementDirections = TargetDirectionControl * speedFly * Time.deltaTime;
 
         movementDirections = transform.TransformDirection(movementDirections);
+
        // movementDirections += Physics.gravity * Time.deltaTime;
+
         characterController.Move(movementDirections );
     }
 }

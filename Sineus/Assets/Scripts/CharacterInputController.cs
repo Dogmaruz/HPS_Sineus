@@ -24,7 +24,8 @@ public class CharacterInputController : MonoBehaviour
 
     private void Update()
     {
-        characterMovement.TargetDirectionControl = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        characterMovement.TargetDirectionControl.x = Input.GetAxis("Horizontal");
+        characterMovement.TargetDirectionControl.z = Input.GetAxis("Vertical");
 
         if (targetCamera == null) return;
 
